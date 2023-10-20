@@ -14,11 +14,11 @@ export class InputComponent {
   label = '';
 
   @Input()
-  type = 'text'
+  type = 'text';
 
   @Input()
   placeholder = '';
 
   @Input()
-  format = ''
+  format = '';
 }

@@ -45,7 +45,10 @@ export class RegisterComponent {
     [RegisterValidators.match('password', 'confirmPassword')]
   );
 
-  constructor(private auth: AuthService, private emailTaken: EmailTaken) {}
+  constructor(
+    private auth: AuthService,
+    private emailTaken: EmailTaken
+  ) {}
 
   async register() {
     this.showAlert = true;

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, Params } from '@angular/router';
+import { ActivatedRoute } from '@angular/router';
 import { Observable, map } from 'rxjs';
 
 @Component({
@@ -13,6 +13,6 @@ export class ClipComponent implements OnInit {
   constructor(private route: ActivatedRoute) {}
 
   ngOnInit(): void {
-    this.title$ = this.route.params.pipe(map((params) => params['id']));
+    this.title$ = this.route.params.pipe(map(params => params['id']));
   }
 }

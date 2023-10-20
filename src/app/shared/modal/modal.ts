@@ -1,3 +1,4 @@
 export enum ModalId {
-  AUTH
+  AUTH,
+  EDIT_CLIP
 }

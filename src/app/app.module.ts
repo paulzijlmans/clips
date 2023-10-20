@@ -4,6 +4,7 @@ import { AngularFireAuthModule } from '@angular/fire/compat/auth';
 import { AngularFirestoreModule } from '@angular/fire/compat/firestore';
 import { BrowserModule } from '@angular/platform-browser';
 
+import { AngularFireStorageModule } from '@angular/fire/compat/storage';
 import { environment } from 'src/environments/environment';
 import { AboutComponent } from './about/about.component';
 import { AppRoutingModule } from './app-routing.module';
@@ -13,7 +14,6 @@ import { HomeComponent } from './home/home.component';
 import { NavComponent } from './nav/nav.component';
 import { NotFoundComponent } from './not-found/not-found.component';
 import { UserModule } from './user/user.module';
-import { UploadComponent } from './video/upload/upload.component';
 import { VideoModule } from './video/video.module';
 
 @NgModule({
@@ -22,7 +22,6 @@ import { VideoModule } from './video/video.module';
     NavComponent,
     HomeComponent,
     AboutComponent,
-    UploadComponent,
     ClipComponent,
     NotFoundComponent,
   ],
@@ -33,6 +32,7 @@ import { VideoModule } from './video/video.module';
     AngularFireAuthModule,
     AngularFirestoreModule,
     VideoModule,
+    AngularFireStorageModule,
     AppRoutingModule,
   ],
   providers: [],

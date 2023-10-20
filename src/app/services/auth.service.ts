@@ -24,15 +24,15 @@ export class AuthService {
     private route: ActivatedRoute
   ) {
     this.usersCollection = this.db.collection('users');
-    this.isAuthenticated$ = auth.user.pipe(map((user) => !!user));
+    this.isAuthenticated$ = auth.user.pipe(map(user => !!user));
     this.isAuthenticatedWithDelay$ = this.isAuthenticated$.pipe(delay(1000));
     this.router.events
       .pipe(
-        filter((event) => event instanceof NavigationEnd),
+        filter(event => event instanceof NavigationEnd),
         map(() => this.route.firstChild),
-        switchMap((route) => route?.data ?? of({ authOnly: false }))
+        switchMap(route => route?.data ?? of({ authOnly: false }))
       )
-      .subscribe((data) => {
+      .subscribe(data => {
         this.redirect = data.authOnly ?? false;
       });
   }
