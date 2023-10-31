@@ -6,7 +6,7 @@ import {
   QuerySnapshot,
 } from '@angular/fire/compat/firestore';
 import { AngularFireStorage } from '@angular/fire/compat/storage';
-import { from, map, of, switchMap, tap } from 'rxjs';
+import { from, map, of, switchMap } from 'rxjs';
 import IClip from '../models/clip.model';
 import { SortOrder } from '../video/manage/manage.component';
 
@@ -47,9 +47,14 @@ export class ClipService {
   }
 
   deleteClip(clip: IClip) {
-    return this.storage
-      .ref(`clips/${clip.fileName}`)
-      .delete()
-      .pipe(tap(() => from(this.clipsCollection.doc(clip.docID).delete())));
+    const clipRef = this.storage.ref(`clips/${clip.fileName}`);
+    const screenshotRef = this.storage.ref(
+      `screenshots/${clip.screenshotFileName}`
+    );
+
+    return clipRef.delete().pipe(
+      switchMap(() => from(this.clipsCollection.doc(clip.docID).delete())),
+      switchMap(() => screenshotRef.delete())
+    );
   }
 }
